@@ -44,7 +44,14 @@ function downloadImageByURL(url, filePath) {
 
 };
 
+function makeDir(dirName){
+  fs.mkdir(dirName, (err)=>{
+    if (err) throw err;
+  })
+}
+
 getRepoContributors(myArgs[0], myArgs[1], function(err, collaborators) {
+  makeDir('avatars/');
   if (err) {
     return console.log("Errors:", err);
   }
