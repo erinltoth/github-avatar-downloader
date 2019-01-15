@@ -1,6 +1,7 @@
 var request = require('request');
 var fs = require('fs');
 require('dotenv').config();
+var myArgs = process.argv.slice(2);
 
 const access_token = process.env.GITHUB_TOKEN;
 
@@ -43,7 +44,7 @@ function downloadImageByURL(url, filePath) {
 
 };
 
-getRepoContributors("jquery", "jquery", function(err, collaborators) {
+getRepoContributors(myArgs[0], myArgs[1], function(err, collaborators) {
   if (err) {
     return console.log("Errors:", err);
   }
